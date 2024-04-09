@@ -1,0 +1,45 @@
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(self, function() {
+return /******/ (function() { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./static/js/wizard-ex-checkout.js":
+/*!*****************************************!*\
+  !*** ./static/js/wizard-ex-checkout.js ***!
+  \*****************************************/
+/***/ (function() {
+
+eval("/**\n *  Form Wizard\n */\n\n\n\n// rateyo (jquery)\nfunction _typeof(o) { \"@babel/helpers - typeof\"; return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && \"function\" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? \"symbol\" : typeof o; }, _typeof(o); }\n$(function () {\n  var readOnlyRating = $('.read-only-ratings');\n\n  // Star rating\n  if (readOnlyRating) {\n    readOnlyRating.rateYo({\n      rtl: isRtl,\n      rating: 4,\n      starWidth: '20px'\n    });\n  }\n});\n(function () {\n  // Init custom option check\n  window.Helpers.initCustomOptionCheck();\n\n  // libs\n  var creditCardMask = document.querySelector('.credit-card-mask'),\n    expiryDateMask = document.querySelector('.expiry-date-mask'),\n    cvvMask = document.querySelector('.cvv-code-mask');\n\n  // Credit Card\n  if (creditCardMask) {\n    new Cleave(creditCardMask, {\n      creditCard: true,\n      onCreditCardTypeChanged: function onCreditCardTypeChanged(type) {\n        if (type != '' && type != 'unknown') {\n          document.querySelector('.card-type').innerHTML = '<img src=\"' + assetsPath + 'img/icons/payments/' + type + '-cc.png\" height=\"28\"/>';\n        } else {\n          document.querySelector('.card-type').innerHTML = '';\n        }\n      }\n    });\n  }\n  // Expiry Date Mask\n  if (expiryDateMask) {\n    new Cleave(expiryDateMask, {\n      date: true,\n      delimiter: '/',\n      datePattern: ['m', 'y']\n    });\n  }\n\n  // CVV\n  if (cvvMask) {\n    new Cleave(cvvMask, {\n      numeral: true,\n      numeralPositiveOnly: true\n    });\n  }\n\n  // Wizard Checkout\n  // --------------------------------------------------------------------\n\n  var wizardCheckout = document.querySelector('#wizard-checkout');\n  if (_typeof(wizardCheckout) !== undefined && wizardCheckout !== null) {\n    // Wizard form\n    var wizardCheckoutForm = wizardCheckout.querySelector('#wizard-checkout-form');\n    // Wizard steps\n    var wizardCheckoutFormStep1 = wizardCheckoutForm.querySelector('#checkout-cart');\n    var wizardCheckoutFormStep2 = wizardCheckoutForm.querySelector('#checkout-address');\n    var wizardCheckoutFormStep3 = wizardCheckoutForm.querySelector('#checkout-payment');\n    var wizardCheckoutFormStep4 = wizardCheckoutForm.querySelector('#checkout-confirmation');\n    // Wizard next prev button\n    var wizardCheckoutNext = [].slice.call(wizardCheckoutForm.querySelectorAll('.btn-next'));\n    var wizardCheckoutPrev = [].slice.call(wizardCheckoutForm.querySelectorAll('.btn-prev'));\n    var validationStepper = new Stepper(wizardCheckout, {\n      linear: false\n    });\n\n    // Cart\n    var FormValidation1 = FormValidation.formValidation(wizardCheckoutFormStep1, {\n      fields: {\n        // * Validate the fields here based on your requirements\n      },\n      plugins: {\n        trigger: new FormValidation.plugins.Trigger(),\n        bootstrap5: new FormValidation.plugins.Bootstrap5({\n          // Use this for enabling/changing valid/invalid class\n          // eleInvalidClass: '',\n          eleValidClass: ''\n          // rowSelector: '.col-lg-6'\n        }),\n        autoFocus: new FormValidation.plugins.AutoFocus(),\n        submitButton: new FormValidation.plugins.SubmitButton()\n      }\n    }).on('core.form.valid', function () {\n      // Jump to the next step when all fields in the current step are valid\n      validationStepper.next();\n    });\n\n    // Address\n    var FormValidation2 = FormValidation.formValidation(wizardCheckoutFormStep2, {\n      fields: {\n        // * Validate the fields here based on your requirements\n      },\n      plugins: {\n        trigger: new FormValidation.plugins.Trigger(),\n        bootstrap5: new FormValidation.plugins.Bootstrap5({\n          // Use this for enabling/changing valid/invalid class\n          // eleInvalidClass: '',\n          eleValidClass: ''\n          // rowSelector: '.col-lg-6'\n        }),\n        autoFocus: new FormValidation.plugins.AutoFocus(),\n        submitButton: new FormValidation.plugins.SubmitButton()\n      }\n    }).on('core.form.valid', function () {\n      // Jump to the next step when all fields in the current step are valid\n      validationStepper.next();\n    });\n\n    // Payment\n    var FormValidation3 = FormValidation.formValidation(wizardCheckoutFormStep3, {\n      fields: {\n        // * Validate the fields here based on your requirements\n      },\n      plugins: {\n        trigger: new FormValidation.plugins.Trigger(),\n        bootstrap5: new FormValidation.plugins.Bootstrap5({\n          // Use this for enabling/changing valid/invalid class\n          // eleInvalidClass: '',\n          eleValidClass: ''\n          // rowSelector: '.col-lg-6'\n        }),\n        autoFocus: new FormValidation.plugins.AutoFocus(),\n        submitButton: new FormValidation.plugins.SubmitButton()\n      }\n    }).on('core.form.valid', function () {\n      validationStepper.next();\n    });\n\n    // Confirmation\n    var FormValidation4 = FormValidation.formValidation(wizardCheckoutFormStep4, {\n      fields: {\n        // * Validate the fields here based on your requirements\n      },\n      plugins: {\n        trigger: new FormValidation.plugins.Trigger(),\n        bootstrap5: new FormValidation.plugins.Bootstrap5({\n          // Use this for enabling/changing valid/invalid class\n          // eleInvalidClass: '',\n          eleValidClass: '',\n          rowSelector: '.col-md-12'\n        }),\n        autoFocus: new FormValidation.plugins.AutoFocus(),\n        submitButton: new FormValidation.plugins.SubmitButton()\n      }\n    }).on('core.form.valid', function () {\n      // You can submit the form\n      // wizardCheckoutForm.submit()\n      // or send the form data to server via an Ajax request\n      // To make the demo simple, I just placed an alert\n      alert('Submitted..!!');\n    });\n    wizardCheckoutNext.forEach(function (item) {\n      item.addEventListener('click', function (event) {\n        // When click the Next button, we will validate the current step\n        switch (validationStepper._currentIndex) {\n          case 0:\n            FormValidation1.validate();\n            break;\n          case 1:\n            FormValidation2.validate();\n            break;\n          case 2:\n            FormValidation3.validate();\n            break;\n          case 3:\n            FormValidation4.validate();\n            break;\n          default:\n            break;\n        }\n      });\n    });\n    wizardCheckoutPrev.forEach(function (item) {\n      item.addEventListener('click', function (event) {\n        switch (validationStepper._currentIndex) {\n          case 3:\n            validationStepper.previous();\n            break;\n          case 2:\n            validationStepper.previous();\n            break;\n          case 1:\n            validationStepper.previous();\n            break;\n          case 0:\n          default:\n            break;\n        }\n      });\n    });\n  }\n})();\n\n//# sourceURL=webpack://Sneat/./static/js/wizard-ex-checkout.js?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./static/js/wizard-ex-checkout.js"]();
+/******/ 	
+/******/ 	return __webpack_exports__;
+/******/ })()
+;
+});
